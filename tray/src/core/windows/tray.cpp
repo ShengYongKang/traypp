@@ -15,7 +15,7 @@
 static constexpr auto WM_TRAY = WM_USER + 1;
 std::map<HWND, std::reference_wrapper<Tray::Tray>> Tray::Tray::trayList;
 
-Tray::Tray::Tray(std::string identifier, Icon icon) : BaseTray(std::move(identifier), icon)
+Tray::Tray::Tray(std::wstring identifier, Icon icon) : BaseTray(std::move(identifier), icon)
 {
     memset(&windowClass, 0, sizeof(windowClass));
     windowClass.cbSize = sizeof(windowClass);
@@ -97,8 +97,10 @@ HMENU Tray::Tray::construct(const std::vector<std::shared_ptr<TrayEntry>> &entri
     {
         auto *item = entry.get();
 
-        auto name = std::shared_ptr<char[]>(new char[item->getText().size() + 1]);
-        strcpy(name.get(), item->getText().c_str()); // NOLINT
+        auto text = item->getText();
+        std::wstring wtext(text.begin(), text.end());
+        auto name = std::shared_ptr<wchar_t[]>(new wchar_t[wtext.size() + 1]);
+        wcscpy_s(name.get(), wtext.size() + 1, wtext.c_str());
         parent->allocations.emplace_back(name);
 
         MENUITEMINFO winItem{0};

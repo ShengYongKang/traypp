@@ -7,7 +7,7 @@ namespace Tray
     class Label : public TrayEntry
     {
       public:
-        Label(std::string text);
+        Label(std::wstring text);
         ~Label() override = default;
     };
 } // namespace Tray

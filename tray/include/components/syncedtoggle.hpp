@@ -12,7 +12,7 @@ namespace Tray
       public:
         ~SyncedToggle() override = default;
         SyncedToggle(
-            std::string text, bool &state, std::function<void(bool &)> callback = [](bool & /**/) {});
+            std::wstring text, bool &state, std::function<void(bool &)> callback = [](bool & /**/) {});
 
         void onToggled();
         bool isToggled() const;

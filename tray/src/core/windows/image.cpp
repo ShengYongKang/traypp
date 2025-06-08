@@ -3,8 +3,8 @@
 #include <core/image.hpp>
 
 Tray::Image::Image(HBITMAP image) : image(image) {}
-Tray::Image::Image(const char *path) : Image(std::string(path)) {}
-Tray::Image::Image(const std::string &path)
+Tray::Image::Image(const wchar_t *path) : Image(std::wstring(path)) {}
+Tray::Image::Image(const std::wstring &path)
     : image(reinterpret_cast<HBITMAP>(LoadImage(nullptr, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE)))
 {
     if (image == nullptr)

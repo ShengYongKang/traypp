@@ -9,10 +9,10 @@ namespace Tray
 #if defined(__linux__)
     class Icon
     {
-        std::string iconPath;
+        std::wstring iconPath;
 
       public:
-        Icon(std::string path);
+        Icon(std::wstring path);
         Icon(const char *path);
         operator const char *();
     };
@@ -24,8 +24,8 @@ namespace Tray
       public:
         Icon(HICON icon);
         Icon(WORD resource);
-        Icon(const char *path);
-        Icon(const std::string &path);
+        Icon(const wchar_t *path);
+        Icon(const std::wstring &path);
 
         operator HICON();
     };

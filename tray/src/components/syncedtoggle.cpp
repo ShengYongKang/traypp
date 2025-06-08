@@ -1,6 +1,6 @@
 #include <components/syncedtoggle.hpp>
 
-Tray::SyncedToggle::SyncedToggle(std::string text, bool &state, std::function<void(bool &)> callback)
+Tray::SyncedToggle::SyncedToggle(std::wstring text, bool &state, std::function<void(bool &)> callback)
     : TrayEntry(std::move(text)), toggled(state), callback(std::move(callback))
 {
 }

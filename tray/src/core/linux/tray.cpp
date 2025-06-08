@@ -11,7 +11,7 @@
 #include <components/syncedtoggle.hpp>
 #include <components/toggle.hpp>
 
-Tray::Tray::Tray(std::string identifier, Icon icon) : BaseTray(std::move(identifier), std::move(icon))
+Tray::Tray::Tray(std::wstring identifier, Icon icon) : BaseTray(std::move(identifier), std::move(icon))
 {
     if (gtk_init_check(nullptr, nullptr) != TRUE)
     {

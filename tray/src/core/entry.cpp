@@ -1,7 +1,7 @@
 #include <core/entry.hpp>
 #include <core/traybase.hpp>
 
-Tray::TrayEntry::TrayEntry(std::string text) : text(std::move(text)) {}
+Tray::TrayEntry::TrayEntry(std::wstring text) : text(std::move(text)) {}
 
 Tray::BaseTray *Tray::TrayEntry::getParent()
 {
@@ -13,12 +13,12 @@ void Tray::TrayEntry::setParent(BaseTray *newParent)
     parent = newParent;
 }
 
-std::string Tray::TrayEntry::getText()
+std::wstring Tray::TrayEntry::getText()
 {
     return text;
 }
 
-void Tray::TrayEntry::setText(std::string newText)
+void Tray::TrayEntry::setText(std::wstring newText)
 {
     text = std::move(newText);
     if (parent)

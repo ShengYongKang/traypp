@@ -7,19 +7,19 @@ namespace Tray
     class TrayEntry
     {
       protected:
-        std::string text;
+        std::wstring text;
         bool disabled = false;
         BaseTray *parent = nullptr;
 
       public:
-        TrayEntry(std::string text);
+        TrayEntry(std::wstring text);
         virtual ~TrayEntry() = default;
 
         BaseTray *getParent();
         void setParent(BaseTray *);
 
-        std::string getText();
-        void setText(std::string);
+        std::wstring getText();
+        void setText(std::wstring);
 
         void setDisabled(bool);
         bool isDisabled() const;

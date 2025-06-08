@@ -2,7 +2,7 @@
 #include <core/traybase.hpp>
 #include <utility>
 
-Tray::ImageButton::ImageButton(std::string text, Image image, std::function<void()> callback)
+Tray::ImageButton::ImageButton(std::wstring text, Image image, std::function<void()> callback)
     : Button(std::move(text), std::move(callback)), image(image)
 {
 }

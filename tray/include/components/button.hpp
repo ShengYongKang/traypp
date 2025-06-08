@@ -11,7 +11,7 @@ namespace Tray
       public:
         ~Button() override = default;
         Button(
-            std::string text, std::function<void()> callback = [] {});
+            std::wstring text, std::function<void()> callback = [] {});
 
         void clicked();
         void setCallback(std::function<void()>);

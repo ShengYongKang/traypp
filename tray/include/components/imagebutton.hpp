@@ -11,7 +11,7 @@ namespace Tray
       public:
         ~ImageButton() override = default;
         ImageButton(
-            std::string text, Image image, std::function<void()> callback = [] {});
+            std::wstring text, Image image, std::function<void()> callback = [] {});
 
         Image getImage();
         void setImage(Image);

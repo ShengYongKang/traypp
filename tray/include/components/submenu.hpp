@@ -12,7 +12,7 @@ namespace Tray
         std::vector<std::shared_ptr<TrayEntry>> entries;
 
       public:
-        Submenu(std::string text);
+        Submenu(std::wstring text);
         ~Submenu() override = default;
 
         template <typename... T> Submenu(std::string text, const T &...entries) : Submenu(text)

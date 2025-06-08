@@ -29,8 +29,8 @@ namespace Tray
       public:
         Image(HBITMAP image);
         Image(WORD resource);
-        Image(const char *path);
-        Image(const std::string &path);
+        Image(const wchar_t *path);
+        Image(const std::wstring &path);
 
         operator HBITMAP();
     };

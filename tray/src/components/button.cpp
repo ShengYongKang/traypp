@@ -1,7 +1,7 @@
 #include <components/button.hpp>
 #include <utility>
 
-Tray::Button::Button(std::string text, std::function<void()> callback)
+Tray::Button::Button(std::wstring text, std::function<void()> callback)
     : TrayEntry(std::move(text)), callback(std::move(callback))
 {
 }

@@ -12,7 +12,7 @@ namespace Tray
       public:
         ~Toggle() override = default;
         Toggle(
-            std::string text, bool state, std::function<void(bool)> callback = [](bool /**/) {});
+            std::wstring text, bool state, std::function<void(bool)> callback = [](bool /**/) {});
 
         void onToggled();
         bool isToggled() const;
