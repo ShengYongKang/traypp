@@ -41,8 +41,8 @@ Tray::Tray::Tray(std::wstring identifier, Icon icon) : BaseTray(std::move(identi
         throw std::runtime_error("Failed to update window");
     }
 
-    memset(&notifyData, 0, sizeof(NOTIFYICONDATA));
-    notifyData.cbSize = sizeof(NOTIFYICONDATA);
+    memset(&notifyData, 0, sizeof(NOTIFYICONDATAW));
+    notifyData.cbSize = sizeof(NOTIFYICONDATAW);
     notifyData.hWnd = hwnd;
     notifyData.uFlags = NIF_ICON | NIF_MESSAGE;
     notifyData.uCallbackMessage = WM_TRAY;
@@ -77,6 +77,10 @@ void Tray::Tray::update()
     DestroyMenu(menu);
     menu = construct(entries, this, true);
 
+    // 设置托盘提示文本
+    notifyData.uFlags |= NIF_TIP;
+    wcsncpy_s(notifyData.szTip, tooltip.c_str(), sizeof(notifyData.szTip) / sizeof(wchar_t) - 1);
+    
     if (Shell_NotifyIcon(NIM_MODIFY, &notifyData) == FALSE)
     {
         throw std::runtime_error("Failed to update tray icon");

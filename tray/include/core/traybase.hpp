@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "entry.hpp"
 #include "icon.hpp"
 
@@ -15,6 +15,7 @@ namespace Tray
         Icon icon;
         std::wstring identifier;
         std::vector<std::shared_ptr<TrayEntry>> entries;
+        std::wstring tooltip; // 新增：托盘提示文本
 
       public:
         BaseTray(std::wstring identifier, Icon icon);
@@ -33,7 +34,18 @@ namespace Tray
 
             return std::dynamic_pointer_cast<std::decay_t<T>>(back);
         }
+        
+        // 新增：设置托盘提示文本
+        void setTooltip(const std::wstring& tip) {
+            tooltip = tip;
+            update();
+        }
 
+        // 新增：获取托盘提示文本
+        std::wstring getTooltip() const {
+            return tooltip;
+        }
+        
         virtual void run() = 0;
         virtual void exit() = 0;
         virtual void update() = 0;
