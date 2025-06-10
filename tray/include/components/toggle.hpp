@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <core/entry.hpp>
 #include <functional>
 
@@ -16,5 +16,6 @@ namespace Tray
 
         void onToggled();
         bool isToggled() const;
+        void setChecked(bool checked, std::function<void(bool)> call_back = [](bool /**/) {});
     };
 } // namespace Tray
